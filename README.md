@@ -1,2 +1,8 @@
 # grub-n-brew
 team project 1
+
+TANNER BRIEGER
+FORREST MILLS
+TIRSA GOMEZ
+JESSE HERNANDEZ
+
