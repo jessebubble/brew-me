@@ -19,17 +19,18 @@
       class="
         min-h-screen
         text-2xl
-        md:container md:mx-auto
-        flex flex-wrap
-        content-center
         tracking-wide
+        grid grid-cols-1
+        md:grid-cols-2
+        gap-4
       "
     >
-      <header>
-        <form action="" class="md:w-full">
+      <!-- form contnet start -->
+      <header class="flex flex-wrap content-center justify-center">
+        <form action="" class="md:w-3/4">
           <div class="flex items-center bg-gray-300 rounded-lg mb-3 shadow">
             <label
-              class="w-20 text-right mr-8 text-gray-500"
+              class="w-10 text-right mr-8 text-gray-500"
               for="current-location"
             >
               <i class="fas fa-map-marker-alt"></i>
@@ -39,12 +40,10 @@
               id="current-location"
               class="
                 flex-1
-                py-4
-                pr-32
+                p-4
                 pl-0
                 bg-transparent
-                placeholder-gray-400
-                text-gray-500
+                text-gray-400
                 focus:outline-none
               "
               name="current-location"
@@ -52,7 +51,7 @@
             />
           </div>
           <div class="flex items-center bg-gray-300 rounded-lg mb-5 shadow">
-            <label class="w-20 text-right mr-8 text-gray-500" for="choices">
+            <label class="w-10 text-right mr-8 text-gray-500" for="choices">
               <i class="fas fa-utensils"> </i>
             </label>
             <select
@@ -60,8 +59,7 @@
               id="choices"
               class="
                 flex-1
-                py-4
-                pr-32
+                p-4
                 pl-0
                 bg-transparent
                 text-gray-400
@@ -93,11 +91,13 @@
           </button>
         </form>
       </header>
-      <!-- map content start -->
-      <main>
-        <!-- content -->
+      <!-- form contnet ends -->
+
+      <!-- map content starts -->
+      <main class="flex flex-wrap content-center">
+        <!-- map content goes here -->
       </main>
-      <!-- map content end -->
+      <!-- map content ends -->
     </div>
   </body>
 </html>
