@@ -4,7 +4,84 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/public/style.css" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body class="bg-gray-100">
+    <!-- content wrapper -->
+    <div class="min-h-screen text-xl md:container md:mx-auto py-32 px-10">
+      <header>
+        <form action="" class="md:w-1/3">
+          <div
+            class="
+              flex
+              items-center
+              bg-gray-300
+              rounded-lg
+              border-b border-gray-100
+              mb-1
+            "
+          >
+            <label
+              class="w-20 text-right mr-8 text-gray-500"
+              for="current-location"
+              >Location</label
+            >
+            <input
+              type="text"
+              id="current-location"
+              class="
+                flex-1
+                p-4
+                pl-0
+                bg-transparent
+                placeholder-gray-400
+                text-white
+                focus:outline-none
+              "
+              name="current-location"
+              placeholder="enter location..."
+            />
+          </div>
+          <div class="flex items-center bg-gray-300 rounded-lg mb-5">
+            <label class="w-20 text-right mr-8 text-gray-500" for="choices"
+              >Select</label
+            >
+            <select
+              name=""
+              id="choices"
+              class="
+                flex-1
+                p-4
+                pl-0
+                bg-transparent
+                text-gray-400
+                focus:outline-none
+              "
+            >
+              <option value="/">choose options</option>
+              <option value="restaurant">restaurant</option>
+              <option value="brewery">brewery</option>
+            </select>
+          </div>
+          <button
+            class="
+              block
+              w-full
+              rounded
+              bg-blue-500
+              py-3
+              text-white
+              font-bold
+              shadow
+            "
+          >
+            Search
+          </button>
+        </form>
+      </header>
+      <!-- map content start -->
+      <!-- map content end -->
+    </div>
+  </body>
 </html>
