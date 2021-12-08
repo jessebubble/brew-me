@@ -11,31 +11,23 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./assets/public/style.css" />
-    <title>Document</title>
+    <title>GrubnBrew</title>
   </head>
   <body class="bg-gray-100">
     <!-- content wrapper -->
     <div
       class="
         min-h-screen
-        text-xl
+        text-2xl
         md:container md:mx-auto
         flex flex-wrap
         content-center
+        tracking-wide
       "
     >
       <header>
         <form action="" class="md:w-full">
-          <div
-            class="
-              flex
-              items-center
-              bg-gray-300
-              rounded-lg
-              border-b border-gray-100
-              mb-1
-            "
-          >
+          <div class="flex items-center bg-gray-300 rounded-lg mb-3 shadow">
             <label
               class="w-20 text-right mr-8 text-gray-500"
               for="current-location"
@@ -52,14 +44,14 @@
                 pl-0
                 bg-transparent
                 placeholder-gray-400
-                text-white
+                text-gray-500
                 focus:outline-none
               "
               name="current-location"
               placeholder="enter city..."
             />
           </div>
-          <div class="flex items-center bg-gray-300 rounded-lg mb-5">
+          <div class="flex items-center bg-gray-300 rounded-lg mb-5 shadow">
             <label class="w-20 text-right mr-8 text-gray-500" for="choices">
               <i class="fas fa-utensils"> </i>
             </label>
@@ -86,11 +78,15 @@
               block
               w-full
               rounded
-              bg-blue-500
               py-3
               text-white
               font-bold
               shadow
+              transition
+              duration-700
+              ease-in-out
+              bg-blue-500
+              hover:bg-blue-700
             "
           >
             Search
@@ -98,6 +94,9 @@
         </form>
       </header>
       <!-- map content start -->
+      <main>
+        <!-- content -->
+      </main>
       <!-- map content end -->
     </div>
   </body>
