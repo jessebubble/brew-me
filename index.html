@@ -1,26 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- LINK TO TAILWIND - alternative to bootstrap-->
-    
-    <!-- LINK TO CSS FILE-->
-    <link rel="stylesheet" href="assets/css/style.css"/>
-    
-    <title>GrubnBrews</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/public/style.css" />
+    <title>GrubnBrew</title>
+  </head>
+  <body class="bg-gray-100">
+    <!-- content wrapper -->
+    <div
+      class="
+        min-h-screen
+        text-2xl
+        tracking-wide
+        grid grid-cols-1
+        md:grid-cols-2
+        gap-4
+      "
+    >
+      <!-- form contnet start -->
+      <header class="flex flex-wrap content-center justify-center">
+        <form action="" class="md:w-3/4">
+          <div class="flex items-center bg-gray-300 rounded-lg mb-3 shadow">
+            <label
+              class="w-10 text-right mr-8 text-gray-500"
+              for="current-location"
+            >
+              <i class="fas fa-map-marker-alt"></i>
+            </label>
+            <input
+              type="text"
+              id="current-location"
+              class="
+                flex-1
+                p-4
+                pl-0
+                bg-transparent
+                text-gray-400
+                focus:outline-none
+              "
+              name="current-location"
+              placeholder="enter city..."
+            />
+          </div>
+          <div class="flex items-center bg-gray-300 rounded-lg mb-5 shadow">
+            <label class="w-10 text-right mr-8 text-gray-500" for="choices">
+              <i class="fas fa-utensils"> </i>
+            </label>
+            <select
+              name=""
+              id="choices"
+              class="
+                flex-1
+                p-4
+                pl-0
+                bg-transparent
+                text-gray-400
+                focus:outline-none
+              "
+            >
+              <option value="/">choose options</option>
+              <option value="restaurant">restaurant</option>
+              <option value="brewery">brewery</option>
+            </select>
+          </div>
+          <button
+            class="
+              block
+              w-full
+              rounded
+              py-3
+              text-white
+              font-bold
+              shadow
+              transition
+              duration-700
+              ease-in-out
+              bg-blue-500
+              hover:bg-blue-700
+            "
+          >
+            Search
+          </button>
+        </form>
+      </header>
+      <!-- form contnet ends -->
 
-<body>
-    
-    
-
-
-    <!-- LINK TO JS FILE -->
-    <script src="assets/js/script.js"></script>
-
-</body>
-
+      <!-- map content starts -->
+      <main class="flex flex-wrap content-center">
+        <!-- map content goes here -->
+      </main>
+      <!-- map content ends -->
+    </div>
+  </body>
 </html>
