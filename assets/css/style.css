@@ -1,5 +1,11 @@
 @tailwind base;
 
+#toggle:checked ~ label div.toggle-ball {
+    /* allows to add custom properties such as adding tailwind css properties*/
+    @apply translate-x-3;
+  }
+  
+
 @tailwind components;
 
 @tailwind utilities;
