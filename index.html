@@ -22,12 +22,16 @@
         tracking-wide
         grid grid-cols-1
         md:grid-cols-2
+        gap-30
+        md:gap-20
         container
         md:mx-auto
       "
     >
       <!-- form contnet start -->
-      <header class="flex flex-wrap flex-col content-center justify-center">
+      <header
+        class="flex flex-wrap flex-col content-center justify-center mb-10"
+      >
         <div class="title">
           <h1 class="mb-5 text-4xl text-center">Grub-n-Brew</h1>
           <p class="mb-10 text-center text-base">
@@ -104,10 +108,24 @@
       <!-- form contnet ends -->
 
       <!-- map content starts -->
-      <main class="flex flex-wrap content-center">
-        <!-- map content goes here -->
+      <main class="flex flex-wrap content-center justify-center">
+        <div class="grid grid-cols-3 gap-20">
+          <div id="time">
+            <p><i class="far fa-clock"></i> 54 min</p>
+          </div>
+          <div id="distance">
+            <p>
+              <i class="fas fa-car"></i>
+              24 miles
+            </p>
+          </div>
+          <div id="location">
+            <p><i class="far fa-building"></i> place</p>
+          </div>
+        </div>
+
+        <div id="map-image"></div>
       </main>
-      <!-- map content ends -->
     </div>
   </body>
 </html>
