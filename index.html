@@ -10,6 +10,11 @@
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./assets/public/style.css" />
     <title>GrubnBrew</title>
   </head>
@@ -17,20 +22,25 @@
     <!-- content wrapper -->
     <div
       class="
-        min-h-screen
+        md:min-h-screen
         text-2xl
         tracking-wide
         grid grid-cols-1
         md:grid-cols-2
-        gap-30
-        md:gap-20
         container
-        md:mx-auto
+        md:gap-20 md:mx-auto
       "
     >
       <!-- form contnet start -->
       <header
-        class="flex flex-wrap flex-col content-center justify-center mb-10"
+        class="
+          flex flex-wrap flex-col
+          content-center
+          justify-center
+          mb-10
+          mt-20
+          md:mt-0
+        "
       >
         <div class="title">
           <h1 class="mb-5 text-4xl text-center">Grub-n-Brew</h1>
@@ -108,26 +118,14 @@
       <!-- form contnet ends -->
 
       <!-- map content starts -->
-      <main class="flex flex-wrap content-center justify-center">
-        <div class="grid grid-cols-3 gap-20">
-          <div id="time">
-            <p><i class="far fa-clock"></i> 54 min</p>
-          </div>
-          <div id="distance">
-            <p>
-              <i class="fas fa-car"></i>
-              24 miles
-            </p>
-          </div>
-          <div id="location">
-            <p><i class="far fa-building"></i> place</p>
-          </div>
-        </div>
-
-        <div id="map-image">
-          <!-- map content goes here -->
-        </div>
-      </main>
+      <div class="flex flex-wrap content-center justify-center w-full h-full">
+        <div
+          id="map"
+          class="h-full w-full md:h-1/2 p-44 m-20 max-w-lg mx-auto md:max-w-2xl"
+        ></div>
+      </div>
+      <!-- map content ends -->
     </div>
+    <script src="./assets/js/map.js"></script>
   </body>
 </html>
