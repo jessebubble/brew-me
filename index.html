@@ -10,8 +10,11 @@
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./assets/public/style.css" />
     <title>GrubnBrew</title>
   </head>
@@ -19,31 +22,47 @@
     <!-- content wrapper -->
     <div
       class="
-        min-h-screen
+        md:min-h-screen
         text-2xl
         tracking-wide
         grid grid-cols-1
         md:grid-cols-2
-        gap-4
+        container
+        md:gap-20 md:mx-auto
       "
     >
       <!-- form contnet start -->
-      <header class="flex flex-wrap content-center justify-center">
-        <form action="" class="md:w-3/4">
+      <header
+        class="
+          flex flex-wrap flex-col
+          content-center
+          justify-center
+          mb-10
+          mt-20
+          md:mt-0
+        "
+      >
+        <div class="title">
+          <h1 class="mb-5 text-4xl text-center">Grub-n-Brew</h1>
+          <p class="mb-10 text-center text-base">
+            This App will help you find a restaurant or a brewery near you
+          </p>
+        </div>
+        <form action="">
           <div class="flex items-center bg-gray-300 rounded-lg mb-3 shadow">
             <label
               class="w-10 text-right mr-8 text-gray-500"
               for="current-location"
             >
-              <i class="fas fa-map-marker-alt"></i>
+              <i class="fas fa-map-marker-alt ml-5"></i>
             </label>
             <input
               type="text"
               id="current-location"
               class="
                 flex-1
-                p-4
-                pl-0
+                py-4
+                pr-32
                 bg-transparent
                 text-gray-400
                 focus:outline-none
@@ -52,17 +71,19 @@
               placeholder="enter city..."
             />
           </div>
-          <div class="flex items-center bg-gray-300 rounded-lg mb-5 shadow">
+          <div
+            class="flex items-center bg-gray-300 rounded-lg mb-5 shadow pr-5"
+          >
             <label class="w-10 text-right mr-8 text-gray-500" for="choices">
-              <i class="fas fa-utensils"> </i>
+              <i class="fas fa-utensils ml-5"> </i>
             </label>
             <select
               name=""
               id="choices"
               class="
                 flex-1
-                p-4
-                pl-0
+                py-4
+                pr-32
                 bg-transparent
                 text-gray-400
                 focus:outline-none
@@ -74,6 +95,7 @@
             </select>
           </div>
           <button
+            type="submit"
             class="
               block
               w-full
@@ -96,11 +118,12 @@
       <!-- form contnet ends -->
 
       <!-- map content starts -->
-      <div id='map'></div>
-      <main class="flex flex-wrap content-center">
-        <!-- map content goes here -->
-        
-      </main>
+      <div class="flex flex-wrap content-center justify-center w-full h-full">
+        <div
+          id="map"
+          class="h-full w-full md:h-1/2 p-44 m-20 max-w-lg mx-auto md:max-w-2xl"
+        ></div>
+      </div>
       <!-- map content ends -->
     </div>
     <script src="./assets/js/map.js"></script>
