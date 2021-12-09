@@ -52,3 +52,13 @@ navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
     enableHighAccuracy: true
 })
 
+
+
+fetch("https://api.openbrewerydb.org/breweries?by_city=san%20diego").then( (response) => {
+    response.json().then( (data) => {
+        console.log(data);
+        let location = data[0].longitude + '/' + data[0].latitude;
+        console.log(location);
+    });
+});
+
