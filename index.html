@@ -58,28 +58,16 @@
     <!-- toggle dark ends -->
 
     <!-- content wrapper -->
-    <div
-      class="
-        md:min-h-screen
-        text-2xl
-        tracking-wide
-        grid grid-cols-1
-        md:grid-cols-2
-        container
-        md:gap-20 md:mx-auto
-      "
-    >
+    <div class="max-h-screen text-2xl md:grid md:grid-cols-2">
       <!-- form content start -->
-      <header
-        class="flex flex-wrap flex-col content-center justify-start md:mt-20"
-      >
+      <header class="md:flex md:flex-col md:mt-40 w-3/5 mx-auto">
         <div class="title">
           <h1 class="mb-5 text-4xl text-center">Grub-n-Brew</h1>
           <p class="mb-10 text-center text-base">
             This App will help you find a restaurant or a brewery near you
           </p>
         </div>
-        <form action="">
+        <form action="" class="w-full">
           <div
             class="
               flex
@@ -101,9 +89,8 @@
               type="text"
               id="current-location"
               class="
-                flex-1
+                w-full
                 py-4
-                pr-32
                 bg-transparent
                 text-black
                 dark:text-gray-100
@@ -132,9 +119,8 @@
               name=""
               id="choices"
               class="
-                flex-1
+                w-full
                 py-4
-                pr-32
                 bg-transparent
                 text-gray-400
                 focus:outline-none
@@ -170,11 +156,8 @@
       <!-- form content ends -->
 
       <!-- map content starts -->
-      <div class="flex flex-wrap content-start justify-start w-full h-full">
-        <div
-          id="map"
-          class="h-full w-full md:h-1/2 p-44 m-20 max-w-lg mx-auto md:max-w-2xl"
-        ></div>
+      <div class="md:flex md:flex-col w-full h-full mx-auto mt-20">
+        <div id="map" class="h-full w-full md:w-4/5 p-44"></div>
       </div>
       <!-- map content ends -->
     </div>
