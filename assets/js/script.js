@@ -30,23 +30,24 @@ var getCity = function(city) {
         .then(function (data) {
             console.log(data, city);
             for (i = 0; i < data.length; i++) {
+                var breweryname = ([data[i].name]);
                 var longlat = ([data[i].longitude, data[i].latitude]);
-                console.log(longlat);
-                
+                console.log(breweryname + "\n" + longlat);
 
             }
         })
         
 }
-/*var getbylocaltion = function (latitude,longitude) {
-    var requestUrl = 'https://api.openbrewerydb.org/breweries?by_dist=' + latitude + longitude;
+
+/*var getbylocation = function () {
+    var requestUrl = 'https://api.openbrewerydb.org/breweries?by_dist=' + coords;
 
     fetch(requestUrl)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data, latitude, longitude);
+            console.log(data);
         })
     
 }*/
