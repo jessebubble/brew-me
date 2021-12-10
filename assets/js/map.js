@@ -1,23 +1,10 @@
 // selectors
 var checkbox =document.querySelector('#toggle')
 var html = document.querySelector('html')
-var check = document.getElementById("check")
-
-// toggle between light and dark mode for the html page function
-var toggleBetween = function(){
-    // if input is checked then set dark mode if not set light mode
-  checkbox.checked ? html.setAttribute('class', 'dark'): html.removeAttribute('class','dark')
-}
-
-// call function
-toggleBetween()
-
-// event listenter to click checkbox
-checkbox.addEventListener('click', toggleBetween)
 
 
 // START LOCAL STORAGE
-if (localStorage.getItem('darkMode')===null) {
+if (localStorage.getItem('darkMode')=== null) {
     localStorage.setItem('darkMode', "false");
 }
 
@@ -27,13 +14,11 @@ checkStatus ()
         if(localStorage.getItem("darkMode")==="true") {
         //the checkbox is checked (if you load the page by default it isn’t)
         toggle.checked = true;
-        document.getElementsByTagName("p")[0].style.color="#FFF";
-        document.body.style.backgroundColor = "#181A1B"; 
+        html.setAttribute('class', 'dark')
 
         }else{
         toggle.checked = false;
-        document.getElementsByTagName("p")[0].style.color="black";
-        document.body.style.backgroundColor = "#FFF";
+       html.removeAttribute('class','dark')
 
         }
     }
@@ -43,14 +28,11 @@ checkStatus ()
         if (localStorage.getItem('darkMode')==="true"){    
             //set to false, to indicate we are in light mode             
             localStorage.setItem('darkMode', "false");   
-            document.getElementsByTagName("p")[0].style.color="black";
-            document.body.style.backgroundColor = "#FFF";
+            html.removeAttribute('class','dark')
 
         } else{
-            localStorage.setItem('darkMode', "true");                   //same code but adapted for dark theme
-            document.getElementsByTagName("p")[0].style.color="#FFF"; 
-            document.body.style.backgroundColor = "#181A1B"; 
- 
+            localStorage.setItem('darkMode', "true"); //same code but adapted for dark theme
+            html.setAttribute('class', 'dark')
           }
     }
 // END LOCAL STORAGE
@@ -62,7 +44,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZm1pbGxzODkiLCJhIjoiY2t3eTM4bmkwMGFvdDMxb2F1Z
 setupMap = (center) => {
     const map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
+        style: 'mapbox://styles/mapbox/dark-v10',
         center: center,
         zoom: 15
       });
