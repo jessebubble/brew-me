@@ -18,14 +18,14 @@ checkbox.addEventListener('click', toggleDarkMode)
 mapboxgl.accessToken = 'pk.eyJ1IjoiZm1pbGxzODkiLCJhIjoiY2t3eTM4bmkwMGFvdDMxb2F1ZDhsaGswYiJ9.rbSTg0blKEIsiji9lwSKIw';
 
 
-setupMap = (center) => {
+setupMap = (lng, lat) => {
+
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
-        center: center,
-        zoom: 15
-      });
-
+        center: [-98.4936, 29.424349],
+        zoom: 8
+      })
 
     const nav = new mapboxgl.NavigationControl()
         map.addControl(nav)
@@ -35,16 +35,26 @@ setupMap = (center) => {
               // if input is checked then set dark mode to map if not set light mode
             checkbox.checked ? map.setStyle('mapbox://styles/mapbox/dark-v10') : map.setStyle('mapbox://styles/mapbox/light-v10')
         })
+
+    const ll = new mapboxgl.LngLat(lng, lat);
+    console.log(ll);
+    ll.toArray();
+        
+    // Create a new marker.
+    const marker = new mapboxgl.Marker()
+    .setLngLat(ll)
+    .addTo(map);
+
 }
 
 
-let successLocation = (position) => {
+var successLocation = (position) => {
     console.log(position);
     setupMap([position.coords.longitude, position.coords.latitude]);
 };
 
-let errorLocation = () => {
-    setupMap([29.421, -98.4936]);
+var errorLocation = () => {
+    setupMap([-98.4936, 29.424349]);
 };
 
 
@@ -53,12 +63,17 @@ navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
 })
 
 
-
-fetch("https://api.openbrewerydb.org/breweries?by_city=san%20diego").then( (response) => {
+fetch("https://api.openbrewerydb.org/breweries?by_city=san%20antonio").then( (response) => {
     response.json().then( (data) => {
         console.log(data);
-        let location = data[0].longitude + '/' + data[0].latitude;
-        console.log(location);
+
+    for (i = 0; i < data.length; i++) {
+        var lng = (data[i].longitude);
+        var lat = (data[i].latitude);
+
+        setupMap(lng, lat);
+    }
     });
 });
+
 
