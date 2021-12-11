@@ -43,9 +43,6 @@ if (localStorage.getItem('darkMode')=== null) {
     localStorage.setItem('darkMode', "false");
 }
 
-<<<<<<< HEAD
-checkStatus ()
-
     function checkStatus(){
         if(localStorage.getItem("darkMode")==="true") {
         //the checkbox is checked (if you load the page by default it isn’t)
@@ -72,26 +69,16 @@ checkStatus ()
           }
     }
 // END LOCAL STORAGE
-=======
->>>>>>> feature/add-markers
 
 // function for map
 var setupMap = (data, city) => {
 
     const map = new mapboxgl.Map({
         container: 'map',
-<<<<<<< HEAD
-        style: 'mapbox://styles/mapbox/dark-v10',
-        center: center,
-        zoom: 15
-      });
-
-=======
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [-98.4936, 29.424349],
         zoom: 8
       })
->>>>>>> feature/add-markers
 
     const nav = new mapboxgl.NavigationControl()
         map.addControl(nav)
@@ -142,11 +129,8 @@ navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
     });
 });*/
 
-// call function
-toggleDarkMode()
-
-// event listenter to click checkbox
-checkbox.addEventListener('click', toggleDarkMode)
+// call function 
+checkStatus()
 
 cityform.addEventListener('submit', formSubmit);
 
