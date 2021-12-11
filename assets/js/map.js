@@ -43,11 +43,6 @@ if (localStorage.getItem('darkMode')=== null) {
     localStorage.setItem('darkMode', "false");
 }
 
-<<<<<<< HEAD
-=======
-checkStatus ()
-
->>>>>>> e4cddee92ca8b66b5a518b1c3a23cda30a1339d4
     function checkStatus(){
         if(localStorage.getItem("darkMode")==="true") {
         //the checkbox is checked (if you load the page by default it isn’t)
@@ -78,20 +73,13 @@ checkStatus ()
 // function for map
 var setupMap = (data, city) => {
 
+    console.log(city);
     const map = new mapboxgl.Map({
         container: 'map',
-<<<<<<< HEAD
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [-98.4936, 29.424349],
         zoom: 8
       })
-=======
-        style: 'mapbox://styles/mapbox/dark-v10',
-        center: center,
-        zoom: 15
-      });
-
->>>>>>> e4cddee92ca8b66b5a518b1c3a23cda30a1339d4
 
     const nav = new mapboxgl.NavigationControl()
         map.addControl(nav)
