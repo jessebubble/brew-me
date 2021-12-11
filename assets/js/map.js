@@ -45,11 +45,11 @@ var setupMap = (data) => {
 }
 
 // if location is allowed store accurate current location
-var successLocation = (position) => {
+/*var successLocation = (position) => {
     console.log(position);
     setupMap([position.coords.longitude, position.coords.latitude]);
 };
-// block locatation defaults to San Antonio
+// block location defaults to San Antonio
 var errorLocation = () => {
     setupMap([-98.4936, 29.424349]);
 };
@@ -57,7 +57,8 @@ var errorLocation = () => {
 // ask user if app will allow location
 navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
     enableHighAccuracy: true
-})
+})*/
+
 // mock fetch of api data from brewery api
 fetch("https://api.openbrewerydb.org/breweries?by_city=san%20antonio").then( (response) => {
     response.json().then( (data) => {
