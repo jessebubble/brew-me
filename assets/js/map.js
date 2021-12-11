@@ -8,17 +8,10 @@ var toggleDarkMode = function(){
   checkbox.checked ? html.setAttribute('class', 'dark'): html.removeAttribute('class','dark')
 }
 
-// call function
-toggleDarkMode()
-
-// event listenter to click checkbox
-checkbox.addEventListener('click', toggleDarkMode)
-
-
 mapboxgl.accessToken = 'pk.eyJ1IjoiZm1pbGxzODkiLCJhIjoiY2t3eTM4bmkwMGFvdDMxb2F1ZDhsaGswYiJ9.rbSTg0blKEIsiji9lwSKIw';
 
 
-setupMap = (lng, lat) => {
+var setupMap = (data) => {
 
     const map = new mapboxgl.Map({
         container: 'map',
@@ -36,15 +29,19 @@ setupMap = (lng, lat) => {
             checkbox.checked ? map.setStyle('mapbox://styles/mapbox/dark-v10') : map.setStyle('mapbox://styles/mapbox/light-v10')
         })
 
-    const ll = new mapboxgl.LngLat(lng, lat);
-    console.log(ll);
-    ll.toArray();
-        
-    // Create a new marker.
-    const marker = new mapboxgl.Marker()
-    .setLngLat(ll)
-    .addTo(map);
+    for (var i = 0; i < data.length; i++) {
+        var lng = (data[i].longitude);
+        var lat = (data[i].latitude);
+            
+        const ll = new mapboxgl.LngLat(lng, lat);
+        ll.toArray();
+        console.log(ll);
 
+    // Create a new marker.
+        const marker = new mapboxgl.Marker()
+            .setLngLat(ll)
+            .addTo(map);
+    }
 }
 
 
@@ -62,18 +59,18 @@ navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
     enableHighAccuracy: true
 })
 
-
 fetch("https://api.openbrewerydb.org/breweries?by_city=san%20antonio").then( (response) => {
     response.json().then( (data) => {
-        console.log(data);
 
-    for (i = 0; i < data.length; i++) {
-        var lng = (data[i].longitude);
-        var lat = (data[i].latitude);
+        setupMap(data);
 
-        setupMap(lng, lat);
-    }
     });
 });
 
+//setupMap();
 
+// call function
+toggleDarkMode()
+
+// event listenter to click checkbox
+checkbox.addEventListener('click', toggleDarkMode)
