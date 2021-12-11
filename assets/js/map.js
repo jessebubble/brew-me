@@ -1,6 +1,41 @@
 // selectors
 var checkbox = document.querySelector('#toggle')
 var html = document.querySelector('html')
+var cityform = document.getElementById('city-form');
+var cityformInput = document.querySelector('#current-location')
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiZm1pbGxzODkiLCJhIjoiY2t3eTM4bmkwMGFvdDMxb2F1ZDhsaGswYiJ9.rbSTg0blKEIsiji9lwSKIw';
+
+// on 'submit' grab city name 
+var formSubmit = function (event) {
+    event.preventDefault();
+
+    var cityname = cityformInput.value.trim();
+
+    if (cityname) {
+        getCity(cityname);
+
+        cityformInput.value = '';
+    } else {
+        console.log("ENTER VALID CITY");
+    }
+
+}
+
+// based on user input - pull data for cities breweries
+var getCity = function(city) {
+    var requestUrl = 'https://api.openbrewerydb.org/breweries?by_city=' + city;
+
+    fetch(requestUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            // callback function for setupMap and pass data/city 
+            setupMap(data, city);
+        })
+}
 
 // toggle between light and dark mode for the html page function
 var toggleDarkMode = function(){
@@ -8,10 +43,9 @@ var toggleDarkMode = function(){
   checkbox.checked ? html.setAttribute('class', 'dark'): html.removeAttribute('class','dark')
 }
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiZm1pbGxzODkiLCJhIjoiY2t3eTM4bmkwMGFvdDMxb2F1ZDhsaGswYiJ9.rbSTg0blKEIsiji9lwSKIw';
 
 // function for map
-var setupMap = (data) => {
+var setupMap = (data, city) => {
 
     const map = new mapboxgl.Map({
         container: 'map',
@@ -44,6 +78,7 @@ var setupMap = (data) => {
     }
 }
 
+// ** need to debug **
 // if location is allowed store accurate current location
 /*var successLocation = (position) => {
     console.log(position);
@@ -60,16 +95,19 @@ navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
 })*/
 
 // mock fetch of api data from brewery api
-fetch("https://api.openbrewerydb.org/breweries?by_city=san%20antonio").then( (response) => {
+/*fetch("https://api.openbrewerydb.org/breweries?by_city=san%20antonio").then( (response) => {
     response.json().then( (data) => {
 
         setupMap(data);
 
     });
-});
+});*/
 
 // call function
 toggleDarkMode()
 
 // event listenter to click checkbox
 checkbox.addEventListener('click', toggleDarkMode)
+
+cityform.addEventListener('submit', formSubmit);
+
