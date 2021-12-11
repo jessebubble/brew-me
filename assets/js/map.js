@@ -43,7 +43,6 @@ if (localStorage.getItem('darkMode')=== null) {
     localStorage.setItem('darkMode', "false");
 }
 
-<<<<<<< HEAD
 checkStatus ()
 
     function checkStatus(){
@@ -72,26 +71,17 @@ checkStatus ()
           }
     }
 // END LOCAL STORAGE
-=======
->>>>>>> feature/add-markers
 
 // function for map
 var setupMap = (data, city) => {
 
     const map = new mapboxgl.Map({
         container: 'map',
-<<<<<<< HEAD
         style: 'mapbox://styles/mapbox/dark-v10',
         center: center,
         zoom: 15
       });
 
-=======
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [-98.4936, 29.424349],
-        zoom: 8
-      })
->>>>>>> feature/add-markers
 
     const nav = new mapboxgl.NavigationControl()
         map.addControl(nav)
