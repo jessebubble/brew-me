@@ -10,7 +10,7 @@ var toggleDarkMode = function(){
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZm1pbGxzODkiLCJhIjoiY2t3eTM4bmkwMGFvdDMxb2F1ZDhsaGswYiJ9.rbSTg0blKEIsiji9lwSKIw';
 
-
+// function for map
 var setupMap = (data) => {
 
     const map = new mapboxgl.Map({
@@ -28,7 +28,7 @@ var setupMap = (data) => {
               // if input is checked then set dark mode to map if not set light mode
             checkbox.checked ? map.setStyle('mapbox://styles/mapbox/dark-v10') : map.setStyle('mapbox://styles/mapbox/light-v10')
         })
-
+    // iterating through data long/lat to display markers
     for (var i = 0; i < data.length; i++) {
         var lng = (data[i].longitude);
         var lat = (data[i].latitude);
@@ -44,21 +44,21 @@ var setupMap = (data) => {
     }
 }
 
-
+// if location is allowed store accurate current location
 var successLocation = (position) => {
     console.log(position);
     setupMap([position.coords.longitude, position.coords.latitude]);
 };
-
+// block locatation defaults to San Antonio
 var errorLocation = () => {
     setupMap([-98.4936, 29.424349]);
 };
 
-
+// ask user if app will allow location
 navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
     enableHighAccuracy: true
 })
-
+// mock fetch of api data from brewery api
 fetch("https://api.openbrewerydb.org/breweries?by_city=san%20antonio").then( (response) => {
     response.json().then( (data) => {
 
@@ -66,8 +66,6 @@ fetch("https://api.openbrewerydb.org/breweries?by_city=san%20antonio").then( (re
 
     });
 });
-
-//setupMap();
 
 // call function
 toggleDarkMode()
