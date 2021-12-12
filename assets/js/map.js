@@ -13,7 +13,7 @@ var formSubmit = function (event) {
     var cityname = cityformInput.value.trim();
 
     if (cityname) {
-        getCity(cityname);
+    getCityInfo(cityname);
 
         cityformInput.value = '';
     } else {
@@ -22,20 +22,26 @@ var formSubmit = function (event) {
 
 }
 
-// based on user input - pull data for cities breweries
-var getCity = function(city) {
-    var requestUrl = 'https://api.openbrewerydb.org/breweries?by_city=' + city;
-
-    fetch(requestUrl)
-        .then(function (response) {
+// calling both mapbox and brewery apis at the same time
+var getCityInfo = (city) => {
+    Promise.all([
+        fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/" + city + ".json?access_token=" + mapboxgl.accessToken),
+        fetch("https://api.openbrewerydb.org/breweries?by_city=" + city)
+    ]).then((responses) => {
+        return Promise.all(responses.map((response) => {
             return response.json();
-        })
-        .then(function (data) {
+        }))
+            }).then((data) => {
             console.log(data);
-            // callback function for setupMap and pass data/city 
-            setupMap(data, city);
-        })
+
+            // sending data to function setupMap
+                setupMap(data);
+
+            }).catch((error) => {
+                console.log(error);
+            });
 }
+
 
 
 // START LOCAL STORAGE
@@ -71,13 +77,20 @@ if (localStorage.getItem('darkMode')=== null) {
 // END LOCAL STORAGE
 
 // function for map
-var setupMap = (data, city) => {
+var setupMap = (data) => {
 
-    console.log(city);
+    // grabbing city lng/lat in data
+    var cityLng = (data[0].features[0].center[0]);
+    var cityLat = (data[0].features[0].center[1]);
+
+    const cityll = new mapboxgl.LngLat(cityLng, cityLat);
+    cityll.toArray();
+    console.log(cityll);
+
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
-        center: [-98.4936, 29.424349],
+        center: (cityll),
         zoom: 8
       })
 
@@ -89,14 +102,15 @@ var setupMap = (data, city) => {
               // if input is checked then set dark mode to map if not set light mode
             checkbox.checked ? map.setStyle('mapbox://styles/mapbox/dark-v10') : map.setStyle('mapbox://styles/mapbox/light-v10')
         })
+
     // iterating through data long/lat to display markers
-    for (var i = 0; i < data.length; i++) {
-        var lng = (data[i].longitude);
-        var lat = (data[i].latitude);
+    for (var i = 0; i < data[1].length; i++) {
+        var lng = (data[1][i].longitude);
+        var lat = (data[1][i].latitude);
+        console.log(lng, lat);
             
         const ll = new mapboxgl.LngLat(lng, lat);
         ll.toArray();
-        console.log(ll);
 
     // Create a new marker.
         const marker = new mapboxgl.Marker()
@@ -104,6 +118,7 @@ var setupMap = (data, city) => {
             .addTo(map);
     }
 }
+
 
 // ** need to debug **
 // if location is allowed store accurate current location
