@@ -38,7 +38,7 @@ var getCityInfo = (city) => {
             }).then((data) => {
             console.log(data);
 
-            // sending data to function setupMap and to dispayAlert
+            // sending data to function setupMap and to displayAlert
                 setupMap(data);
                 displayAlert(data);
             }).catch((error) => {
