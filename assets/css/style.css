@@ -1,18 +1,61 @@
 @tailwind base;
 
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap");
+
 #toggle:checked ~ label div.toggle-ball {
-    /* allows to add custom properties such as adding tailwind css properties*/
-    @apply translate-x-3;
-  }
-  
+  /* allows to add custom properties such as adding tailwind css properties*/
+  @apply translate-x-3;
+}
 
-  * {
-    box-sizing: border-box;
-    margin:0;
-    padding: 0;
-  }
+/* reseting */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  
+/* pop-up styling start */
+.mapboxgl-popup {
+  max-width: 300px;
+}
+
+.mapboxgl-popup-content {
+  font-size: 0.9rem;
+  text-align: center;
+  font-family: "Quicksand", sans-serif;
+  color: #000;
+  padding: 1rem;
+  width: 260px;
+}
+/* pop-up styling end */
+
+/* utility classes start */
+
+.show {
+  animation: show_slide 1s ease forwards;
+}
+
+@keyframes show_slide {
+  0% {
+    transform: translateX(100%);
+  }
+  40% {
+    transform: translateX(-10%);
+  }
+  80% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
+.hide {
+  display: none;
+}
+
+/* utility classes end */
+
 @tailwind components;
 
 @tailwind utilities;
