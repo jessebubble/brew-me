@@ -3,8 +3,6 @@ var checkbox =document.querySelector('#toggle')
 var html = document.querySelector('html')
 var cityform = document.getElementById('city-form');
 var cityformInput = document.querySelector('#current-location')
-var blueAlert = document.querySelector("#blueAlert");
-var closeBlueBtn = document.querySelector(".close-blue-btn");
 var successAlert = document.querySelector("#successAlert");
 var closeSuccessBtn = document.querySelector(".close-success-btn");
 var warningAlert = document.querySelector("#warningAlert");
@@ -20,7 +18,6 @@ var formSubmit = function (event) {
 
     if (cityname) {
     getCityInfo(cityname);
-    displayAlert(cityname);
     save(cityname);
         cityformInput.value = '';
     } else {
@@ -43,6 +40,7 @@ var getCityInfo = (city) => {
 
             // sending data to function setupMap
                 setupMap(data);
+                displayAlert(data);
             }).catch((error) => {
                 console.log(error);
             });
@@ -104,18 +102,29 @@ var setupMap = (data) => {
 // Display Modal Alerts Start
 
 // function to display modal alerts
-var displayAlert = function (city) {
+var displayAlert = function (data) {
+  var dataLength = data[1].length
+  var dataCity = data[0].query.join(' ')
+
   var msgSuccess = document.querySelector(".msgSuccess");
   var msgWarning = document.querySelector(".msgWarning");
 
-  if (city) {
+  if (dataLength && localStorage.getItem("city")) {
     successAlert.classList.remove("hide");
     successAlert.classList.add("show");
-    msgSuccess.innerHTML = `Success! We found some breweries in ${city}.`;
+    msgSuccess.innerHTML = `Success! We found ${dataLength} breweries in ${dataCity}.`;
+    setTimeout(function(){
+      successAlert.classList.remove("show");
+      successAlert.classList.add("hide");
+    }, 6000)
   } else {
     warningAlert.classList.remove("hide");
     warningAlert.classList.add("show");
-    msgWarning.innerHTML = `Sorry, there are no breweries in your area.`;
+    msgWarning.innerHTML = `Please enter a city to see if there are any breweries in your area.`;
+    setTimeout(function(){
+      warningAlert.classList.remove("show");
+      warningAlert.classList.add("hide");
+    }, 6000)
   }
 };
 
@@ -189,17 +198,7 @@ if (localStorage.getItem("city") !== "false") {
 
   getCityInfo(savedCity);
 }
-// alert user on instructions
-if (localStorage.getItem("city") === null) {
-  blueAlert.classList.add("show");
-  blueAlert.classList.remove("hide");
-  blueMsg.innerHTML = `Please enter your city to see if there are any breweries in your area. `;
-  // set time out function for alert
-  setTimeout(function () {
-    blueAlert.classList.add("hide");
-    blueAlert.classList.remove("show");
-  }, 5000);
-}
+
 };
 
 // local storage for map ends
@@ -207,7 +206,7 @@ if (localStorage.getItem("city") === null) {
 // call function 
 checkStatus()
 view()
-closeBlueBtn.addEventListener("click", removeBlueAlert);
+
 closeSuccessBtn.addEventListener("click", removeSuccessAlert);
 closeWarningBtn.addEventListener("click", removeWarningAlert);
 cityform.addEventListener('submit', formSubmit);
