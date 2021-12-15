@@ -1,10 +1,10 @@
-# grub-n-brew
+# Brew Me
 
 Team Project 1: (TANNER BRIEGER, FORREST MILLS, TIRSA GOMEZ, JESSE HERNANDEZ)
 
 Group #: 6
 
-Title: Grub-n-Brew
+Title: Brew Me
 An app to locate breweries
 
 USER STORY:
