@@ -54,17 +54,26 @@ var displayAlert = function(data){
   var msgSuccess = document.querySelector(".msgSuccess");
   var msgWarning = document.querySelector(".msgWarning");
 
-  if(dataLength && localStorage.getItem('city')){
-    successAlert.classList.remove("hide")
-    successAlert.classList.add("show")
-    msgSuccess.innerHTML = `Success! We found ${dataLength} breweries in ${dataCity}.`
-  }else {
+  if (dataLength && localStorage.getItem("city")) {
+    successAlert.classList.remove("hide");
+    successAlert.classList.add("show");
+    msgSuccess.innerHTML = `Success! We found ${dataLength} breweries in ${dataCity}.`;
+    setTimeout(function(){
+      successAlert.classList.remove("show");
+      successAlert.classList.add("hide");
+    }, 6000)
+  } else {
     warningAlert.classList.remove("hide");
     warningAlert.classList.add("show");
-    msgWarning.innerHTML = 'Please enter a city to see if there are any breweries in your area.';
+    msgWarning.innerHTML = `Please enter a city to see if there are any breweries in your area.`;
+    setTimeout(function(){
+      warningAlert.classList.remove("show");
+      warningAlert.classList.add("hide");
+    }, 6000)
   }
 }
 
+// functions to delete modal alerts
 var removeSuccessAlert = function () {
   successAlert.classList.remove("show");
   successAlert.classList.add("hide");
@@ -188,6 +197,7 @@ if (localStorage.getItem("city") !== "false") {
 checkStatus()
 view()
 
+// Event Listeners
 cityform.addEventListener('submit', formSubmit);
 closeSuccessAlert.addEventListener("click", removeSuccessAlert);
 closeWarningAlert.addEventListener("click", removeWarningAlert);
