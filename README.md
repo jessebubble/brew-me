@@ -1,29 +1,42 @@
 # grub-n-brew
+
 Team Project 1: (TANNER BRIEGER, FORREST MILLS, TIRSA GOMEZ, JESSE HERNANDEZ)
 
 Group #: 6
- 
+
 Title: Grub-n-Brew
-An app to locate food/eatery/breweries
- 
+An app to locate breweries
+
 USER STORY:
-As a user who is hungry and connected to the web
-I want to search for restaurant and breweries in the city 
-so that I can be hungry no more
+As a user who is thursty and connected to the web
+I want to search for breweries in the city
+so that I can be thursty no more.
 
 ACCEPTANCE CRITERIA:
-GIVEN: I am on grubnbrews super awesome website
+GIVEN: I am on brew me super awesome website.
 
-WHEN I "enter city" and "choose option" (restaurant/brewery)
-THEN I will see "points of interest" (the list of restuarants/breweries in the city) on map
+WHEN I "enter city"
+THEN I will see "points of interest" (the list of breweries in the city) on map.
 
+WHEN I "click" on the brewery on the map
+THEN I will see a pop-up that displays the name of brewery, address, state, and website.
 
-WHEN I "click" on the restaurant/brewery on the map
-THEN I will see the POI "address" and have option for "directions" 
+![website page](./assets/images/website.JPG)
 
-WHEN I enter my address for "directions"
-THEN I will see my route PLUS the "travel time"
+First API
+https://www.openbrewerydb.org/
+Brewery API
+Second API
+https://docs.mapbox.com/api/navigation/directions/
+Mapbox API
 
+Group Roles
+Tirsa - UI
+Jesse - UI
+Tanner - API -1
+Forrest - API - 2
 
+"Wishlist" features - have not reached
 
-
+1.  directions/navigation
+2.  travel time
