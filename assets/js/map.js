@@ -84,13 +84,11 @@ var setupMap = (data) => {
        .setPopup(
          new mapboxgl.Popup({ offset: 25 }) // add popups
            .setHTML(
-             `<h2>${data[1][i].name}</h2>
-               <h2>${data[1][i].street}</h2>
-               <h2>${data[1][i].postal_code}</h2>
-               <h2>${data[1][i].state}</h2>
-               <h2>${data[1][i].website_url}</h2>
-               
-               `
+             `<h2>${data[1][i].name}</h2>` +
+               `<h2>${data[1][i].street}</h2>` +
+               `<h2>${data[1][i].postal_code}</h2>`+
+              `<h2>${data[1][i].state}</h2>` +
+              `<a href=${data[1][i].website_url}>${data[1][i].website_url}</a>`              
            )
        )
        .addTo(map);
