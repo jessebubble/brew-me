@@ -22,6 +22,7 @@ WHEN I "click" on the brewery on the map
 THEN I will see a pop-up that displays the name of brewery, address, state, and website.
 
 ![website page](./assets/images/website.JPG)
+[website link](https://jesseovr.github.io/brew-me/)
 
 First API
 https://www.openbrewerydb.org/
