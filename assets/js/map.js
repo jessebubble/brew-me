@@ -127,10 +127,7 @@ var displayAlert = function (data) {
 };
 
 // functions to delete modal alerts
-var removeBlueAlert = function () {
-  blueAlert.classList.remove("show");
-  blueAlert.classList.add("hide");
-};
+
 
 var removeSuccessAlert = function () {
   successAlert.classList.remove("show");
@@ -190,7 +187,6 @@ localStorage.setItem("city", new_city);
 };
 
 var view = function () {
-var blueMsg = document.querySelector(".msgBlue");
 if (localStorage.getItem("city") !== "false") {
   var savedCity = localStorage.getItem("city");
 
