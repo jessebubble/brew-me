@@ -3,10 +3,10 @@ var checkbox =document.querySelector('#toggle')
 var html = document.querySelector('html')
 var cityform = document.getElementById('city-form');
 var cityformInput = document.querySelector('#current-location')
-var successAlert = document.querySelector("#successAlert");
-var closeSuccessBtn = document.querySelector(".close-success-btn");
-var warningAlert = document.querySelector("#warningAlert");
-var closeWarningBtn = document.querySelector(".close-warning-btn");
+var warningAlert = document.querySelector('#warningAlert')
+var closeWarningAlert = document.querySelector('.close-warning-btn')
+var successAlert = document.querySelector('#successAlert')
+var closeSuccessAlert = document.querySelector('.close-success-btn')
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZm1pbGxzODkiLCJhIjoiY2t3eTM4bmkwMGFvdDMxb2F1ZDhsaGswYiJ9.rbSTg0blKEIsiji9lwSKIw';
 
@@ -40,12 +40,43 @@ var getCityInfo = (city) => {
 
             // sending data to function setupMap and to displayAlert
                 setupMap(data);
-                displayAlert(data);
+                displayAlert(data)
             }).catch((error) => {
                 console.log(error);
             });
 
 }
+
+// Display Modal Alerts Start
+var displayAlert = function(data){
+  var dataLength = data[1].length;
+  var dataCity = data[0].query.join(' ');
+  var msgSuccess = document.querySelector(".msgSuccess");
+  var msgWarning = document.querySelector(".msgWarning");
+
+  if(dataLength && localStorage.getItem('city')){
+    successAlert.classList.remove("hide")
+    successAlert.classList.add("show")
+    msgSuccess.innerHTML = `Success! We found ${dataLength} breweries in ${dataCity}.`
+  }else {
+    warningAlert.classList.remove("hide");
+    warningAlert.classList.add("show");
+    msgWarning.innerHTML = `Please enter a city to see if there are any breweries in your area.`;
+  }
+}
+
+var removeSuccessAlert = function () {
+  successAlert.classList.remove("show");
+  successAlert.classList.add("hide");
+};
+
+var removeWarningAlert = function () {
+  warningAlert.classList.remove("show");
+  warningAlert.classList.add("hide");
+};
+
+
+// Display Modal Alerts End
 
 // function for map
 var setupMap = (data) => {
@@ -96,50 +127,6 @@ var setupMap = (data) => {
 }
 
 
-
-// Display Modal Alerts Start
-
-// function to display modal alerts
-var displayAlert = function (data) {
-  var dataLength = data[1].length
-  var dataCity = data[0].query.join(' ')
-
-  var msgSuccess = document.querySelector(".msgSuccess");
-  var msgWarning = document.querySelector(".msgWarning");
-
-  if (dataLength && localStorage.getItem("city")) {
-    successAlert.classList.remove("hide");
-    successAlert.classList.add("show");
-    msgSuccess.innerHTML = `Success! We found ${dataLength} breweries in ${dataCity}.`;
-    setTimeout(function(){
-      successAlert.classList.remove("show");
-      successAlert.classList.add("hide");
-    }, 6000)
-  } else {
-    warningAlert.classList.remove("hide");
-    warningAlert.classList.add("show");
-    msgWarning.innerHTML = `Please enter a city to see if there are any breweries in your area.`;
-    setTimeout(function(){
-      warningAlert.classList.remove("show");
-      warningAlert.classList.add("hide");
-    }, 6000)
-  }
-};
-
-// functions to delete modal alerts
-
-
-var removeSuccessAlert = function () {
-  successAlert.classList.remove("show");
-  successAlert.classList.add("hide");
-};
-
-var removeWarningAlert = function () {
-  warningAlert.classList.remove("show");
-  warningAlert.classList.add("hide");
-};
-
-// Display Modal Alerts End
 
 // START LOCAL STORAGE FOR TOGGLE DARKMODE
 if (localStorage.getItem('darkMode')=== null) {
@@ -201,6 +188,6 @@ if (localStorage.getItem("city") !== "false") {
 checkStatus()
 view()
 
-closeSuccessBtn.addEventListener("click", removeSuccessAlert);
-closeWarningBtn.addEventListener("click", removeWarningAlert);
 cityform.addEventListener('submit', formSubmit);
+closeSuccessAlert.addEventListener("click", removeSuccessAlert);
+closeWarningAlert.addEventListener("click", removeWarningAlert);
