@@ -8,9 +8,9 @@ Title: Brew Me
 An app to locate breweries
 
 USER STORY:
-As a user who is thursty and connected to the web
+As a user who is thirsty and connected to the web
 I want to search for breweries in the city
-so that I can be thursty no more.
+so that I can be thirsty no more.
 
 ACCEPTANCE CRITERIA:
 GIVEN: I am on brew me super awesome website.
