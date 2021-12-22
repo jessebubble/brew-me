@@ -1,5 +1,6 @@
 # Brew Me
 
+
 Team Project 1: (TANNER BRIEGER, FORREST MILLS, TIRSA GOMEZ, JESSE HERNANDEZ)
 
 Group #: 6
@@ -41,3 +42,7 @@ Forrest - API - 2
 
 1.  directions/navigation
 2.  travel time
+
+
+## Changes
+I will be making some changes to this app... again. 
