@@ -1,42 +1,23 @@
-# Brew Me
+# Brew Me 🍺
+- Powered by two server-side APIs: `Open Brewery` and `MapBox` 
+- We built an application that will let a USER `Search` by `City` for `Breweries` across the 🇺🇸
 
-Team Project 1: (TANNER BRIEGER, FORREST MILLS, TIRSA GOMEZ, JESSE HERNANDEZ)
+## Live Link 🔗
+* [Brew Me](https://jessebubble.github.io/brew-me/)
 
-Group #: 6
+![screenshot](./assets/images/website.JPG)
 
-Title: Brew Me
-An app to locate breweries
+## Meet The Team 👨‍🎤 👩‍🎤
+* [Tirsa Gomez](https://github.com/trrgomez)
+* [Tanner Brieger](https://github.com/TannerReed29)
+* [Forrest Mills](https://github.com/fmills89)
+* [Jesse Hernandez](https://github.com/jessebubble)
 
-USER STORY:
-As a user who is thursty and connected to the web
-I want to search for breweries in the city
-so that I can be thursty no more.
+## Resources 
+* [Open Brewery API](https://www.openbrewerydb.org/)
+* [Map Box API](https://docs.mapbox.com/api/navigation/directions/)
+* [TailWind CSS](https://tailwindcss.com/)
 
-ACCEPTANCE CRITERIA:
-GIVEN: I am on brew me super awesome website.
-
-WHEN I "enter city"
-THEN I will see "points of interest" (the list of breweries in the city) on map.
-
-WHEN I "click" on the brewery on the map
-THEN I will see a pop-up that displays the name of brewery, address, state, and website.
-
-![website page](./assets/images/website.JPG)
-
-First API
-https://www.openbrewerydb.org/
-Brewery API
-Second API
-https://docs.mapbox.com/api/navigation/directions/
-Mapbox API
-
-Group Roles
-Tirsa - UI
-Jesse - UI
-Tanner - API -1
-Forrest - API - 2
-
-"Wishlist" features - have not reached
-
-1.  directions/navigation
-2.  travel time
+## Pending Updates 
+- CSS Styling
+- Directions/Navigation feature
